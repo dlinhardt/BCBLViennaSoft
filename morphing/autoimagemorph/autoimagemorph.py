@@ -353,26 +353,46 @@ mscale = 1.0 # image scale
 # This is for the loop
 res  = 1024;
 numImages = 100;
-langs = {'ES','AT'};
+langs = {'AT'};  # {'ES','AT'};
 imnames = {'RW'}; # {'RW','PW'};
 numImages = 100;
 
-for lang in langs: 
-    for imname in imnames:
-        os.chdir(origDir)
-        A = sorted(glob.glob(f"{lang}_{imname}_{res}x{res}*"))
-        for a in A:
-            images     = [f"{lang}_CB_{res}x{res}.png", a]
-            moutprefix = "NEW_"+a.replace(".png","")+"_step-"
-            batchmorph(images, mfeaturegridsize, msubpixel, mshowfeatures, 
-                       mframerate, moutprefix, msmoothing, mscale)
-            # sd  = sp.call(f'~/bin/ffmpeg -framerate 15 -i {moutprefix}%d.png 
-            #               {moutprefix}advice.gif', shell=True)
+
+for imname in imnames:
+    for lang in langs:
+
+
+imname = 'RW'
+lang='AT'
+origDir = '/Users/glerma/toolboxes/BCBLViennaSoft/local/PNGs/orig'
+os.chdir(origDir)
+A = sorted(glob.glob(f"{lang}_{imname}_{res}x{res}*"))
+A = A[15:]
+for a in A:
+    images     = [f"{lang}_CB_{res}x{res}.png", a]
+    moutprefix = "NEW_"+a.replace(".png","")+"_step-"
+    batchmorph(images, mfeaturegridsize, msubpixel, mshowfeatures, 
+               mframerate, moutprefix, msmoothing, mscale)
+    # sd  = sp.call(f'~/bin/ffmpeg -framerate 15 -i {moutprefix}%d.png 
+    #               {moutprefix}advice.gif', shell=True)
 
 
 
+# Try to do it using parfor
+# from parfor import parfor
+# from parfor import pmap
 
-
+# origDir = '/Users/glerma/toolboxes/BCBLViennaSoft/local/PNGs/orig'
+# imname = 'RW'
+# lang='ES'
+# os.chdir(origDir)
+# A = sorted(glob.glob(f"{lang}_{imname}_{res}x{res}*"))
+# def fun(A):
+#     images     = [f"{lang}_CB_{res}x{res}.png", A]
+#     moutprefix = "NEW_"+A.replace(".png","")+"_step-"
+#     batchmorph(images, mfeaturegridsize, msubpixel, mshowfeatures, 
+#                        mframerate, moutprefix, msmoothing, mscale)
+# pmap(fun, A[0:2])
 
 
 
