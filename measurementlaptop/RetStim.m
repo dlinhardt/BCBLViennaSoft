@@ -107,6 +107,7 @@ p.addParameter('CalibValidRatio', 1,@isnumeric);
 p.addParameter('TriggerKey', 's',@ischar); %only 'prisma' has an effect in pressKey2Begin.m
 p.addParameter('ScotomaBorderVisualAngle', 3.5,@isnumeric);
 p.addParameter('Display', Display, @isstruct);
+p.addParameter('DrawFirstTexture', 0, @isnumeric); % 1 is drawing first image instead of last before scan starts
 
 p.parse(varargin{:})
 Screen('Preference', 'SkipSyncTests', 1);
@@ -220,6 +221,8 @@ if input.Eyetracker==1
                 readParams.params.repetitions  = input.Repetitions;
                 readParams.params.display      = input.Display;
                 readParams.params.startScan    = 0;
+                readParams.params.prescanDuration = 0;
+                readParams.params.DrawFirstTexture = input.DrawFirstTexture;
                 readParams.params.MeasurementlaptopFolderLocation = input.MeasurementlaptopFolderLocation;                
                 LoadAllInFile(readParams.params, input);
             case {'wedgeringsaltnojump'}
@@ -281,6 +284,8 @@ else
                 readParams.params.repetitions  = input.Repetitions;
                 readParams.params.display      = input.Display;
                 readParams.params.startScan    = 0;
+                readParams.params.prescanDuration = 0;
+                readParams.params.DrawFirstTexture = input.DrawFirstTexture;
                 readParams.params.MeasurementlaptopFolderLocation = input.MeasurementlaptopFolderLocation;
                 LoadAllInFile(readParams.params, input);
             case {'wedgeringsaltnojump'}
