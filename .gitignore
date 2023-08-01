@@ -1,6 +1,13 @@
-measurementlaptop/edfFiles/
-measurementlaptop/logfiles/
+measurementlaptop/edfFiles/*
+measurementlaptop/logfiles/*
 local/
+Psychtoolbox-3/
+images/*
+DATA/
+**.DS_Store
+
+stimulus.mat
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
