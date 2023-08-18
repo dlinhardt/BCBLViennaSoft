@@ -8,24 +8,24 @@
 
 close all; clear all;
 
-PatientName = 'TestGari';  
 
+PatientName = 'test_et';  
 % Edit EyeTracker. Options: 0 | 1
 Eyetracker = 0;
 
 % Edit TR. Options: 1 | 0.8
 % Select right sequence in scanner: 
 % for TR=1 > 305 (300+5); for TR=0.8 > 380 (300/0.8+5) volumes
-TR = 1; 
+TR = 0.8;
 
 % Edit imageName. Options: 'CB'|'RW'|'PW'
+% we do RW, CB, RW10, RW20
 imageName = 'CB'; 
-
 % Edit lang. Options: 'ES'|'AT'
-lang = 'ES'; 
+lang = 'AT'; 
 
 % Edit macEcc. Options: 8 | 9
-maxEcc = 8; % Vienna = 9, , BCBL = 8. Oobjective 9 for bcbl first, then 13
+maxEcc = 9; % Vienna = 9, , BCBL = 8. Oobjective 9 for bcbl first, then 13
 
 
 % No options for these for now
@@ -38,7 +38,7 @@ params = retCreateDefaultGUIParams;
 % Paste here data from both Vienna and SS
 
 % BCBL
-% {
+%{
 % masks = string(fullfile(pmRootPath,'data','images','maskimages.mat'));
 masks = string(fullfile(bvRootPath,"morphing","DATA","retWordsMagno","maskimages.mat")); % both are the same
 stimulusdir = string(fullfile(bvRootPath,"morphing","DATA","retWordsMagno"));
@@ -53,22 +53,24 @@ params.display.backColorIndex=128;
 params.radius = rad2deg(atan(params.display.dimensions(2)/params.display.distance)/2);
 TriggerKey = 'bcbl';
 triggerDeviceDetector = 'KeyWarrior8 Flex';
+DrawFirstTexture = 0;
 %}
 
 % VIENNA
-%{
-masks = string(fullfile(pmRootPath,'data','images','maskimages.mat'));
+% {
+% masks = string(fullfile(bvRootPath,'data','images','maskimages.mat'));
 % masks = "~/soft/morphing/DATA/retWordsMagno/maskimages.mat"; % both are the same
-stimulusdir="/Users/glerma/soft/morphing/DATA/retWordsMagno";
+stimulusdir="/Users/fmri/BCBLViennaSoft/morphing/DATA/retWordsMagno";
 params.display.numPixels  = [1280 1024];
-params.display.dimensions = [24.6000 18.3000];
+params.display.dimensions = [38.000 30.4000];
 params.display.pixelSize = params.display.dimensions(2)/params.display.numPixels(2);
-params.display.distance = 43.0474;
+params.display.distance = 94.;
 params.display.frameRate = 60; % VGA Projector
 % Calculate radius (calculator: https://www.sr-research.com/visual-angle-calculator/)
 params.radius = rad2deg(atan(params.display.dimensions(2)/params.display.distance)/2);
-TriggerKey = 'prisma'; % In Vienna use the same thing as always
-triggerDeviceDetector = '904';
+TriggerKey = '7t'; % In Vienna use the same thing as always
+% triggerDeviceDetector = '904';
+DrawFirstTexture = 1;
 %}
 
 % This values modify the retstim, these are all the vars that it takes that are
@@ -126,6 +128,10 @@ loadMatrix = fullfile(bvRootPath,'images', ...
                     '_barWidth-' num2str(barWidth) 'deg' ...
                     '.mat']);   
                 
+loadMatrix = fullfile(bvRootPath,'images', ...
+    'bar_smooth_dur-240_ecc-6_width-1.6_tr1_images.mat')6;
+
+
 if isfile(loadMatrix)
     RetStim('FullStimName', loadMatrix, ...
             'PatientName', PatientName, ...
@@ -143,6 +149,7 @@ if isfile(loadMatrix)
             'TriggerKey', TriggerKey, ...
             'TR', TR, ...
             'Repetitions', Repetitions, ...
+            'DrawFirstTexture', DrawFirstTexture, ...;
             'MeasurementlaptopFolderLocation', MeasurementlaptopFolderLocation);
 else
     error('Check the file %s exists, otherwise create it with the python code',loadMatrix)
