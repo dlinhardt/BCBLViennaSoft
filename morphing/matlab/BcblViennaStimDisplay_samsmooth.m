@@ -9,23 +9,25 @@
 close all; clear all;
 
 
-PatientName = 'test_et';  
+PatientName = 'samsmooth23_006_001';  
 % Edit EyeTracker. Options: 0 | 1
 Eyetracker = 1;
 
-% Edit TR. Options: 1 | 0.8
-% Select right sequence in scanner: 
-% for TR=1 > 305 (300+5); for TR=0.8 > 380 (300/0.8+5) volumes
-TR = 0.8;
+% Edit TR. Options: 1
+TR = 1;
 
-% Edit imageName. Options: 'CB'|'RW'|'PW'
-% we do RW, CB, RW10, RW20
-imageName = 'CB'; 
-% Edit lang. Options: 'ES'|'AT'
-lang = 'AT'; 
+% Edit imageName. Options: 'smooth'|'smallJump'|'standard'
+imageName = 'standard'; 
+
+% click here after start:
+% 
+
+% shift stimulus
+ShiftStimX = 0;
+ShiftStimY = 0  ;
 
 % Edit macEcc. Options: 8 | 9
-maxEcc = 9; % Vienna = 9, , BCBL = 8. Oobjective 9 for bcbl first, then 13
+maxEcc = 7; % 3T = 9, , 7T = 6
 
 
 % No options for these for now
@@ -80,8 +82,7 @@ DrawFirstTexture = 1;
 % For RetStim (pass them all, always)
 PatientName                     = PatientName;
 MeasurementlaptopFolderLocation = bvRootPath;
-FixationPerformanceFolder       = fullfile(bvRootPath,'measurementlaptop',...
-                                  'FixationPerformance');
+FixationPerformanceFolder       = fullfile('measurementlaptop', 'FixationPerformance');
 StimType                        = 'allInFile'; % Provide file with params and stimuli
 SimulatedScotoma                = 0; 
 FixationandBackgroundSizeMult   = [];
@@ -119,17 +120,11 @@ totalduration = params.scanDuration;
 %% RUN RetStim
 
 
-% Generate file name to read (created with the python code)
-% loadMatrix = fullfile(bvRootPath,'images', ...
-%                     [lang '_' imageName '_tr-' num2str(params.tr) ...
-%                     '_duration-' num2str(totalduration) 'sec' ...
-%                     '_size-' num2str(stimSize) 'pix' ...
-%                     '_maxEcc-' num2str(maxEcc) 'deg' ...
-%                     '_barWidth-' num2str(barWidth) 'deg' ...
-%                     '.mat']);   
-                 
+% Generate file name to read (created with the python code)                 
 loadMatrix = fullfile(bvRootPath,'images', ...
-    'bar_smooth_dur-240_ecc-6_width-1.6_tr1_images.mat');
+   ['bar_',imageName,'_dur-240_ecc-6_width-1.6_tr1_images.mat']);
+   % 'bar_standard_dur-251_ecc-9_scanner-3t_tr1_images.mat');
+
 
 
 if isfile(loadMatrix)
@@ -150,7 +145,9 @@ if isfile(loadMatrix)
             'TR', TR, ...
             'Repetitions', Repetitions, ...
             'DrawFirstTexture', DrawFirstTexture, ...;
-            'MeasurementlaptopFolderLocation', MeasurementlaptopFolderLocation);
+            'MeasurementlaptopFolderLocation', MeasurementlaptopFolderLocation, ...
+            'ShiftStimX', ShiftStimX, ...
+            'ShiftStimY', ShiftStimY);
 else
     error('Check the file %s exists, otherwise create it with the python code',loadMatrix)
 end

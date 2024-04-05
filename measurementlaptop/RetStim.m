@@ -223,7 +223,9 @@ if input.Eyetracker==1
                 readParams.params.startScan    = 0;
                 readParams.params.prescanDuration = 0;
                 readParams.params.DrawFirstTexture = input.DrawFirstTexture;
-                readParams.params.MeasurementlaptopFolderLocation = input.MeasurementlaptopFolderLocation;                
+                readParams.params.MeasurementlaptopFolderLocation = input.MeasurementlaptopFolderLocation;
+                readParams.params.FixationPerformanceFolder = input.FixationPerformanceFolder;
+                readParams.params.PatientName = input.PatientName;
                 LoadAllInFile(readParams.params, input);
             case {'wedgeringsaltnojump'}
                 LoadRingAndWedgeStim(FullStimulusPath,input);
@@ -287,6 +289,8 @@ else
                 readParams.params.prescanDuration = 0;
                 readParams.params.DrawFirstTexture = input.DrawFirstTexture;
                 readParams.params.MeasurementlaptopFolderLocation = input.MeasurementlaptopFolderLocation;
+                readParams.params.FixationPerformanceFolder = input.FixationPerformanceFolder;
+                readParams.params.PatientName = input.PatientName;
                 LoadAllInFile(readParams.params, input);
             case {'wedgeringsaltnojump'}
                 LoadRingAndWedgeStim(FullStimulusPath,input);

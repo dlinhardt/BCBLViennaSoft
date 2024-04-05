@@ -242,20 +242,19 @@ for n = 1:params.repetitions
     
     if isfield(params,'MovingFixation')
         if isfield(params,'ShiftStim') && max(abs(params.ShiftStim))~=0
-            [response, timing, quitProg] = showScanStimulus(params.display,stimulus,time0, timeFromT0,ResponseDeviceNumber,params.fovgrid,params.MovingFixation,ShiftStimFixationPixDim); %#ok<ASGLU>
+            [response, timing, quitProg] = showScanStimulus(params.display,stimulus,time0, timeFromT0,ResponseDeviceNumber,params.fovgrid, params.triggerKey,params.MovingFixation,ShiftStimFixationPixDim); %#ok<ASGLU>
         else
-            [response, timing, quitProg] = showScanStimulus(params.display,stimulus,time0, timeFromT0,ResponseDeviceNumber,params.fovgrid,params.MovingFixation); %#ok<ASGLU>
+            [response, timing, quitProg] = showScanStimulus(params.display,stimulus,time0, timeFromT0,ResponseDeviceNumber,params.fovgrid, params.triggerKey,params.MovingFixation); %#ok<ASGLU>
         end
     elseif isfield(params,'ShiftStim') && max(abs(params.ShiftStim))~=0
         
-        [response, timing, quitProg] = showScanStimulus(params.display,stimulus,time0, timeFromT0,ResponseDeviceNumber,params.fovgrid,[],ShiftStimFixationPixDim); %#ok<ASGLU>
+        [response, timing, quitProg] = showScanStimulus(params.display,stimulus,time0, timeFromT0,ResponseDeviceNumber,params.fovgrid, params.triggerKey,[],ShiftStimFixationPixDim); %#ok<ASGLU>
         
     else
         
-        [response, timing, quitProg] = showScanStimulus(params.display,stimulus,time0, timeFromT0,ResponseDeviceNumber,params.fovgrid); %#ok<ASGLU>
+        [response, timing, quitProg] = showScanStimulus(params.display,stimulus,time0, timeFromT0,ResponseDeviceNumber,params.fovgrid, params.triggerKey); %#ok<ASGLU>
         
     end
-    
     
     if isfield(params,'EyetrackerExperiment')&&params.EyetrackerExperiment==1
         
@@ -279,8 +278,8 @@ for n = 1:params.repetitions
     if ~isempty(params.loadMatrix) && isfield(params,'FixationPerformanceFolder')
         [~,LoadStimName]=fileparts(params.loadMatrix);
         fid = fopen(fullfile(params.FixationPerformanceFolder,[SubjectName,'.txt']), 'a+');
-%         fprintf(fid,'Fixation performance of run "%s", which finished on %s:\n',LoadStimName,datestr(now));
-%         fprintf(fid,'percent correct: %.1f %%, reaction time: %.1f secs\n',pc,rc);
+        fprintf(fid,'Fixation performance of run "%s", which finished on %s:\n',LoadStimName,datestr(now));
+        fprintf(fid,'percent correct: %.1f %%, reaction time: %.1f secs\n',pc,rc);
         fclose(fid);
     end
     

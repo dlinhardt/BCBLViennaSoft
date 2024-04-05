@@ -1,10 +1,13 @@
 measurementlaptop/edfFiles/*
 measurementlaptop/logfiles/*
 local/
-Psychtoolbox-3/
-images/*
+Psychtoolbox-3
 DATA/
+images/*
+mortphing/DATA/
 **.DS_Store
+
+measurementlaptop_7T
 
 stimulus.mat
 
