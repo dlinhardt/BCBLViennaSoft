@@ -8,7 +8,7 @@
 
 close all; clear all;
 
-PatientName = 'test';  
+PatientName = 'te66cst';  
 % Edit EyeTracker. Options: 0 | 1
 Eyetracker = 0;
 
@@ -16,7 +16,7 @@ Eyetracker = 0;
 TR = 1;
 
 % Edit imageName. Options: 'hrf'|'bar'
-imageName = 'bar';
+imageName = 'colour_test.mat';
 
 % click here after start:
 % 
@@ -62,14 +62,14 @@ DrawFirstTexture = 0;
 % masks = string(fullfile(bvRootPath,'data','images','maskimages.mat'));
 % masks = "~/soft/morphing/DATA/retWordsMagno/maskimages.mat"; % both are the same
 stimulusdir="/Users/fmri/BCBLViennaSoft/morphing/DATA/retWordsMagno";
-params.display.numPixels  = [1280 1024];
+params.display.numPixels  = [12860 1024];
 params.display.dimensions = [38.000 30.4000];
 params.display.pixelSize = params.display.dimensions(2)/params.display.numPixels(2);
 params.display.distance  = 94.;
 params.display.frameRate = 60; % VGA Projector
 % Calculate radius (calculator: https://www.sr-research.com/visual-angle-calculator/)
 params.radius = rad2deg(atan(params.display.dimensions(2)/params.display.distance)/2);
-TriggerKey = 'prisma'; % In Vienna use the same thing as always
+TriggerKey = '7t'; % In Vienna use the same thing as always
 % triggerDeviceDetector = '904';
 DrawFirstTexture = 1;
 %}
@@ -125,8 +125,7 @@ if strcmp(imageName, 'hrf')
 elseif strcmp(imageName, 'bar')
     stim_to_use = 'bar_nojump_dur-272_ecc-9_width-2_tr1_images.mat';
 else
-    disp('Invalid imageName!')
-    return
+    stim_to_use = imageName;
 end
 
 loadMatrix = fullfile(bvRootPath,'images', stim_to_use);

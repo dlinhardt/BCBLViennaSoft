@@ -1,6 +1,12 @@
-100 0.8
-93.8 0.8
-93.8 0.8
-93.8 0.9
-93.8 0.8
-93.8 0.9
+Fixation performance of run "bar_standard_dur-240_ecc-6_width-1.6_tr1_images", which finished on 15-Sep-2023 13:17:42:
+percent correct: 100.0 %, reaction time: 0.7 secs
+Fixation performance of run "bar_smooth_dur-240_ecc-6_width-1.6_tr1_images", which finished on 15-Sep-2023 13:23:48:
+percent correct: 100.0 %, reaction time: 0.6 secs
+Fixation performance of run "bar_smallJump_dur-240_ecc-6_width-1.6_tr1_images", which finished on 15-Sep-2023 13:29:30:
+percent correct: 100.0 %, reaction time: 0.7 secs
+Fixation performance of run "bar_standard_dur-240_ecc-6_width-1.6_tr1_images", which finished on 15-Sep-2023 13:34:57:
+percent correct: 100.0 %, reaction time: 0.8 secs
+Fixation performance of run "bar_smooth_dur-240_ecc-6_width-1.6_tr1_images", which finished on 15-Sep-2023 13:42:51:
+percent correct: 100.0 %, reaction time: 0.6 secs
+Fixation performance of run "bar_smallJump_dur-240_ecc-6_width-1.6_tr1_images", which finished on 15-Sep-2023 13:48:29:
+percent correct: 100.0 %, reaction time: 0.6 secs
