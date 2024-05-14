@@ -1,0 +1,2 @@
+Fixation performance of run "colour_test", which finished on 14-May-2024 14:22:47:
+percent correct: 0.0 %, reaction time: 0.0 secs

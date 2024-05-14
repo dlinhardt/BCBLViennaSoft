@@ -8,7 +8,7 @@
 
 close all; clear all;
 
-PatientName = 'te66cst';  
+PatientName = 'test';  
 % Edit EyeTracker. Options: 0 | 1
 Eyetracker = 0;
 
