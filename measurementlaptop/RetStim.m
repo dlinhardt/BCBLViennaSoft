@@ -116,6 +116,8 @@ Screen('Preference', 'VisualDebugLevel', 0);
 
 input = p.Results
 
+
+
 %Prepend MeasurementlaptopFolderLocation to Paths
 input.StimulusFolder=fullfile(input.MeasurementlaptopFolderLocation,input.StimulusFolder);
 input.EDFFolder=fullfile(input.MeasurementlaptopFolderLocation,input.EDFFolder);
@@ -226,6 +228,8 @@ if input.Eyetracker==1
                 readParams.params.MeasurementlaptopFolderLocation = input.MeasurementlaptopFolderLocation;
                 readParams.params.FixationPerformanceFolder = input.FixationPerformanceFolder;
                 readParams.params.PatientName = input.PatientName;
+                readParams.params.BackgroundFullscreen = input.BackgroundFullscreenColor;
+                readParams.params.fixation = input.Fixation;
                 LoadAllInFile(readParams.params, input);
             case {'wedgeringsaltnojump'}
                 LoadRingAndWedgeStim(FullStimulusPath,input);
@@ -291,6 +295,8 @@ else
                 readParams.params.MeasurementlaptopFolderLocation = input.MeasurementlaptopFolderLocation;
                 readParams.params.FixationPerformanceFolder = input.FixationPerformanceFolder;
                 readParams.params.PatientName = input.PatientName;
+                readParams.params.BackgroundFullscreen = input.BackgroundFullscreenColor;                readParams.params.fixation = input.Fixation;
+                readParams.params.fixation = input.Fixation;
                 LoadAllInFile(readParams.params, input);
             case {'wedgeringsaltnojump'}
                 LoadRingAndWedgeStim(FullStimulusPath,input);

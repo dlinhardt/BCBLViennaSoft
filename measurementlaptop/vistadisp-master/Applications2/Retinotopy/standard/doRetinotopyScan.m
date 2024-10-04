@@ -94,6 +94,8 @@ Screen('Preference','SkipSyncTests', 1);
 params.display                = openScreen(params.display);
 params.display.devices        = params.devices;
 
+params.display.fixType = params.fixation;
+
 % to allow blending
 Screen('BlendFunction', params.display.windowPtr, GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 

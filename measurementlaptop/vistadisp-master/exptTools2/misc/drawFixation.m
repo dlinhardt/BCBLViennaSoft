@@ -11,7 +11,7 @@ function drawFixation(d, colIndex, frame, Center, MoveType, MoveRadius, Array, A
 % 2008.05.11 JW:  added 'dot and 'none' options
 %                 added 'lateraldots'
 if nargin < 2,
-    colIndex = 1;
+    colIndex = 2;
 end;
 
 if nargin < 3,
