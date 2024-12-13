@@ -5,10 +5,13 @@ local/
 Psychtoolbox-3
 DATA/
 images/*
+images/AT*
+images/ES*
 mortphing/DATA/
 **.DS_Store
 
 *_images.mat
+measurementlaptop/FixationPerformance/*
 
 measurementlaptop_7T
 
